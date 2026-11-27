@@ -9,7 +9,6 @@ x=torch.tensor([
     [3.0,3.0],
     [2.0,6.0]
 ],device='cuda')
-y=h@w2
 trg = torch.tensor([
     [3],
     [5],
@@ -24,7 +23,7 @@ for iteration in range(iterations):
     assert y.shape == trg.shape
     res=y-trg
     gradY=2*res/res.numel()
-    gradW2= h.T@gradY
+    gradW2=h.T@gradY
     gradH=gradY@w2.T
     gradZ=gradH*(z>0)
     gradW1=x.T@gradZ
